@@ -6,16 +6,19 @@ import random
 def get_days_from_today(date: str):
     today = dt.today()
     #transform the given string to datetime object
-    date_datetime_object = dt.strptime(date, '%Y-%m-%d')
+    try:
+        date_datetime_object = dt.strptime(date, '%Y-%m-%d')
+    except ValueError:
+        print("Incorrect date format, should be YYYY-MM-DD")
+        return None
     #find the difference between the two dates
     delta = today - date_datetime_object
     return delta.days
 
 # date = input("Enter a date in YYYY-MM-DD format: ")
-# try:
-#     print(f"Days from today to {date}: {get_days_from_today(date)} days")
-# except ValueError:
-#     print("Invalid date format. Please use YYYY-MM-DD format.")
+# days = get_days_from_today(date)
+# if days is not None:
+#     print(f"Days from today to {date}: {days} days")
 
 #Task 2
 def get_numbers_ticket(min, max, quantity):
